@@ -13,7 +13,7 @@
                 <h1 class="text-2xl font-bold">Create a New Post</h1>
             </div>
 
-            <form action="{{ route('posts.store') }}" method="POST" class="space-y-5 px-6 py-5">
+            <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" class="space-y-5 px-6 py-5">
                 @csrf
 
                 @if ($errors->any())
@@ -36,6 +36,13 @@
                     <label for="content" class="mb-1 block text-sm font-medium text-slate-700">Content</label>
                     <textarea id="content" name="content" rows="6" placeholder="Write your post content"
                         class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200">{{ old('content') }}</textarea>
+                </div>
+
+                <div>
+                    <label for="image" class="mb-1 block text-sm font-medium text-slate-700">Post Image</label>
+                    <input type="file" id="image" name="image" accept="image/*"
+                        class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm file:mr-4 file:rounded-md file:border-0 file:bg-indigo-50 file:px-3 file:py-2 file:font-medium file:text-indigo-700 hover:file:bg-indigo-100">
+                    <p class="mt-1 text-xs text-slate-500">Allowed: jpg, jpeg, png, gif, webp (max 2MB).</p>
                 </div>
 
                 <div class="flex items-center gap-3 pt-2">

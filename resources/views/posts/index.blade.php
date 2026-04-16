@@ -25,12 +25,18 @@
             <ul class="divide-y divide-slate-200">
                 @forelse ($posts as $post)
                     <li class="flex flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
-                        <div>
+                        <div class="flex items-start gap-4">
+                            @if ($post->image)
+                                <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post['title'] }}" class="h-20 w-28 rounded-lg object-cover">
+                            @endif
+
+                            <div>
                             <a href="{{ route('posts.show', $post['id']) }}" class="font-semibold text-slate-800 hover:text-indigo-600">
                                 {{ $post['title'] }}
                             </a>
                             <p class="mt-1 text-sm text-slate-500">Post #{{ $post['id'] }}</p>
                             <p class="mt-1 text-sm text-slate-500">By: {{ $post->user->name ?? 'Unknown user' }}</p>
+                            </div>
                         </div>
 
                         <div class="flex items-center gap-2">

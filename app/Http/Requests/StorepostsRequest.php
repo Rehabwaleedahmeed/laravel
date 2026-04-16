@@ -24,6 +24,7 @@ class StorepostsRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
+            'image' => 'required|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
         ];
     }
     public function messages(): array
@@ -34,6 +35,10 @@ class StorepostsRequest extends FormRequest
             'title.max' => 'The title may not be greater than 255 characters.',
             'content.required' => 'The content field is required.',
             'content.string' => 'The content must be a string.',
+            'image.required' => 'Please upload an image for the post.',
+            'image.image' => 'The uploaded file must be an image.',
+            'image.mimes' => 'The image must be a file of type: jpg, jpeg, png, gif, webp.',
+            'image.max' => 'The image may not be greater than 2MB.',
         ];
     }
 }

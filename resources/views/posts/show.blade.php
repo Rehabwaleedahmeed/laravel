@@ -22,6 +22,10 @@
             </div>
 
             <div class="px-6 py-5">
+                @if ($post->image)
+                    <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post['title'] }}" class="mb-5 max-h-96 w-full rounded-lg object-cover">
+                @endif
+
                 <p class="whitespace-pre-line leading-7 text-slate-700">{{ $post['content'] }}</p>
             </div>
 

@@ -25,6 +25,16 @@ class UpdatepostsRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'image.image' => 'The uploaded file must be an image.',
+            'image.mimes' => 'The image must be a file of type: jpg, jpeg, png, gif, webp.',
+            'image.max' => 'The image may not be greater than 2MB.',
         ];
     }
 }
